@@ -7,8 +7,8 @@ convertBtn.addEventListener("click", () => {
   const selectedCurrency = currencySelect.value;
   const amount = parseFloat(amountInput.value);
 
-  if (isNaN(amount)) {
-    resultElement.textContent = "Wprowadź poprawną kwotę.";
+  if (isNaN(amount) || amount <= 0) {
+    resultElement.textContent = "Wprowadź poprawną dodatnią kwotę.";
     return;
   }
 
@@ -17,9 +17,14 @@ convertBtn.addEventListener("click", () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      const exchangeRate = data.rates[0].mid;
-      const convertedAmount = (amount * exchangeRate).toFixed(2);
-      resultElement.textContent = `${amount} ${selectedCurrency} = ${convertedAmount} PLN`;
+      const exchangeRate = data?.rates?.[0]?.mid;
+
+      if (exchangeRate) {
+        const convertedAmount = (amount * exchangeRate).toFixed(2);
+        resultElement.textContent = `${amount} ${selectedCurrency} = ${convertedAmount} PLN`;
+      } else {
+        resultElement.textContent = "Wystąpił błąd podczas pobierania danych.";
+      }
     })
     .catch((error) => {
       resultElement.textContent = "Wystąpił błąd podczas pobierania danych.";

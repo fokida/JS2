@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Calibri;
   background-color: #f1f1f1;
   margin: 0;
   padding: 0;
@@ -14,8 +14,8 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-h1 {
-  text-align: left;
+.header {
+  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -24,19 +24,18 @@ h1 {
   flex-direction: column;
 }
 
-label {
+.label {
   margin-bottom: 10px;
 }
 
-input,
-select {
+.table {
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-button {
+.btn {
   padding: 8px 16px;
   font-size: 16px;
   background-color: #007bff;
@@ -46,11 +45,11 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.btn:hover {
   background-color: #0056b3;
 }
 
-p {
+.result {
   font-size: 18px;
   text-align: center;
   margin-top: 20px;
